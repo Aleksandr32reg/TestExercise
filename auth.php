@@ -7,7 +7,7 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $password_2 = $_POST["password_2"];
 
-$isEmailExist = false;
+$count_error = 0;
 
 $users = [
     [
@@ -27,19 +27,24 @@ $users = [
 ];
 
 
-foreach ($users as $user) {
-    $userEmail = $user["email"];
+foreach($users as $line)
+{
+    $check_mail = $line["email"];
 
-    if ($email == $userEmail) {
-        $isEmailExist = true;
+    if($email == $check_mail)
+    {        
+        $count_error = $count_error + 1;
     }
 }
 
 
-if (!$isEmailExist) {
+if($count_error != 0)
+{
     echo 1;
-} else {
-    $arr = array(
+}
+else
+{
+    $arr = array (
         'FirstName' => $FirstName,
         'LastName' => $LastName,
         'email' => $email,
@@ -48,9 +53,10 @@ if (!$isEmailExist) {
     );
 
     $filename = fopen('array.txt', 'a+');
-    $data = json_encode($arr, JSON_UNESCAPED_UNICODE);
-    fwrite($filename, $data . "\r\n");
+    $data = json_encode($arr, JSON_UNESCAPED_UNICODE);  
+    fwrite($filename, $data."\r\n");
     fclose($filename);
 
     echo 2;
 }
+?>
