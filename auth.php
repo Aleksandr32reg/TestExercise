@@ -13,14 +13,14 @@ $users = [
     [
         'FirstName' => 'Hans',
         'LastName' => 'Flick',
-        'email' => 'bayern@munich',
+        'email' => 'first@mail',
         'password' => 'Muller',
         'password_2' => 'Muller'
     ],
     [
         'FirstName' => 'Thomas',
         'LastName' => 'Tuchel',
-        'email' => 'neymar@mbappe',
+        'email' => 'second@mail',
         'password' => 'psg',
         'password_2' => 'psg'
     ]
@@ -33,7 +33,7 @@ foreach($users as $line)
 
     if($email == $check_mail)
     {        
-        $count_error = $count_error + 1;
+        $count_error ++;
     }
 }
 
